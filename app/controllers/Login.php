@@ -19,8 +19,7 @@ class Login extends Controller {
     {
         $check_login = $this->login_model->handleLogin();
         if ($check_login){
-//            require_once 'app/views/home/index.php';
-            $this->home_controller->getListProduct();
+            header("location:/home");
         }
         else{
             $message = "wrong pass";
