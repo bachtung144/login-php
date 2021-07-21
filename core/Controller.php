@@ -10,4 +10,11 @@ class Controller {
         }
         return false;
     }
+
+    public function render($view, $data=[]) {
+        extract($data);
+        if (file_exists('app/views/'.$view.'.php')){
+            require_once 'app/views/'.$view.'.php';
+        }
+    }
 }
