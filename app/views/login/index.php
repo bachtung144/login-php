@@ -1,3 +1,6 @@
+<?php
+if (!isset($_COOKIE['user']) && !isset($_SESSION['login'])){
+?>
 <html>
 <head>
     <title>Trang đăng nhập</title>
@@ -24,3 +27,9 @@
 </form>
 </body>
 </html>
+<?php
+}else{
+    header("location:/home");
+}
+?>
+

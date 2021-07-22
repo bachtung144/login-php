@@ -17,13 +17,29 @@ class Login extends Controller {
 
     function run()
     {
-        $check_login = $this->login_model->handleLogin();
-        if ($check_login){
-            header("location:/home");
+
+        if (isset($_POST['username']) && isset($_POST['password'])) //when form submitted
+        {
+            $check_login = $this->login_model->handleLogin();
+            if ($check_login)
+            {
+                $_SESSION['login'] = $_POST['username']; //write login to server storage
+                setcookie('user', $_POST['username'], time() + 3600, "/");
+                header("location:/home");
+            }
+            else
+            {
+                echo "<script>alert('Wrong login or password');</script>";
+                echo "<noscript>Wrong login or password</noscript>";
+            }
         }
-        else{
-            $message = "wrong pass";
-            echo "<script type='text/javascript'>alert('$message');</script>"; //bug chuyen trang
-        }
+//        $check_login = $this->login_model->handleLogin();
+//        if ($check_login){
+//            header("location:/home");
+//        }
+//        else{
+//            $message = "wrong pass";
+//            echo "<script type='text/javascript'>alert('$message');</script>"; //bug chuyen trang
+//        }
     }
 }
