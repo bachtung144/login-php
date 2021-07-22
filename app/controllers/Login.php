@@ -17,9 +17,11 @@ class Login extends Controller {
 
     function run()
     {
+
         if (isset($_POST['username']) && isset($_POST['password'])) //when form submitted
         {
-            if ($_POST['username'] === 'admin' && $_POST['password'] === 'admin')
+            $check_login = $this->login_model->handleLogin();
+            if ($check_login)
             {
                 $_SESSION['login'] = $_POST['username']; //write login to server storage
                 setcookie('user', $_POST['username'], time() + 3600, "/");
