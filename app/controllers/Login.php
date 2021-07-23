@@ -21,6 +21,14 @@ class Login extends Controller {
         if (isset($_POST['username']) && isset($_POST['password'])) //when form submitted
         {
             $check_login = $this->login_model->handleLogin();
+//            if ($check_login->num_rows > 0) {
+//                // output data of each row
+//                while($row = $check_login->fetch_assoc()) {
+//                    echo "id: " . $row["userid"]. " - Name: " . $row["username"]. " " . $row["password"]. "<br>";
+//                }
+//            } else {
+//                echo "0 results";
+//            }
             if ($check_login)
             {
                 $_SESSION['login'] = $_POST['username']; //write login to server storage
@@ -33,13 +41,5 @@ class Login extends Controller {
                 echo "<noscript>Wrong login or password</noscript>";
             }
         }
-//        $check_login = $this->login_model->handleLogin();
-//        if ($check_login){
-//            header("location:/home");
-//        }
-//        else{
-//            $message = "wrong pass";
-//            echo "<script type='text/javascript'>alert('$message');</script>"; //bug chuyen trang
-//        }
     }
 }
