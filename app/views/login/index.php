@@ -5,25 +5,31 @@ if (!isset($_COOKIE['user']) && !isset($_SESSION['login'])){
 <head>
     <title>Trang đăng nhập</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="app/public/css/login.css">
 </head>
 <body>
 <form method="POST" action="login/run">
-    <fieldset>
-        <legend>Đăng nhập</legend>
-        <table>
-            <tr>
-                <td>Username</td>
-                <td><input type="text" name="username" size="30"></td>
-            </tr>
-            <tr>
-                <td>Password</td>
-                <td><input type="password" name="password" size="30"></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"> <input type="submit" name="btn_submit" value="Đăng nhập"></td>
-            </tr>
-        </table>
-    </fieldset>
+<div class="container">
+    <h2 class="form-title">Login</h2>
+    <p class="error">
+    <?php 
+        if(isset($_SESSION['loginMessage'])){
+            echo $_SESSION['loginMessage'];
+            unset($_SESSION['loginMessage']);
+        }
+    ?>
+    </p>
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="username" required>
+
+    <label for="password"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+    <button type="submit">Login</button>
+    <label>
+      <input type="checkbox" name="remember" value="1"> Remember me
+    </label>
+  </div>
 </form>
 </body>
 </html>

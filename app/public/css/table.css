@@ -1,0 +1,85 @@
+/*table*/
+.content-table{
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    table-layout: fixed;
+    width: 100%;
+}
+
+.content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+  
+.content-table th, .content-table td {
+    padding: 12px 15px;
+}
+  
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+  
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+  
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+th.cl-id{
+    width: 10%;
+}
+
+th.cl-name{
+    width: 30%;
+}
+
+th.cl-address{
+    width: 40%;
+}
+
+th.cl-salary{
+    width: 10%;
+}
+
+th.cl-actions{
+    width: 20%;
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+}
+
+.edit-btn{
+    background-color: gold;
+    border: none;
+    border-radius: 5px;
+}
+
+.delete-btn{
+    background-color: coral;
+    border: none;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.submit-btn{
+    background: #009578;
+    border: none;
+    width: 100px;
+    height: 30px;
+    color: white;
+    border-radius: 10px;
+}
+
+.submit-btn:hover {
+    background: #008168;
+}
