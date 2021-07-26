@@ -1,0 +1,18 @@
+.modal-form {
+    margin: 10px;
+}
+
+label{
+    display: block;
+    margin-bottom: 10px;
+}
+
+label span{
+    display: inline-block;
+    text-align: left;
+    width: 20%;
+}
+
+label input {
+    width: 70%;
+}

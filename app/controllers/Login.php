@@ -3,6 +3,7 @@ class Login extends Controller {
     // Include the other controller in this controller
 
     public $login_model,$home_controller;
+    public $error = '';
 
     public function __construct(){
         require_once 'app/models/LoginModel.php';
@@ -17,28 +18,22 @@ class Login extends Controller {
 
     function run()
     {
-
         if (isset($_POST['username']) && isset($_POST['password'])) //when form submitted
         {
             $check_login = $this->login_model->handleLogin();
-//            if ($check_login->num_rows > 0) {
-//                // output data of each row
-//                while($row = $check_login->fetch_assoc()) {
-//                    echo "id: " . $row["userid"]. " - Name: " . $row["username"]. " " . $row["password"]. "<br>";
-//                }
-//            } else {
-//                echo "0 results";
-//            }
             if ($check_login)
             {
                 $_SESSION['login'] = $_POST['username']; //write login to server storage
-                setcookie('user', $_POST['username'], time() + 3600, "/");
+                $a_check = ((isset($_POST['remember'])!=0)?1:"");
+                if($a_check==1){
+                    setcookie('user', $_POST['username'], time() + 3600, "/");
+                }
                 header("location:/home");
             }
             else
             {
-                echo "<script>alert('Wrong login or password');</script>";
-                echo "<noscript>Wrong login or password</noscript>";
+                $_SESSION['loginMessage'] = 'Wrong username or password';
+                header('location: /login');
             }
         }
     }
